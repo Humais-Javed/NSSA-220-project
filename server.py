@@ -58,8 +58,9 @@ def handle_client(client_socket):
     except ConnectionResetError:
         print("Connection reset by client.")
     finally:
-        client_socket.close()
-
+        # Do not close the client socket here to keep the server open for new connections
+        pass
+    
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind(("localhost", 12345))
